@@ -1,0 +1,34 @@
+{
+  "name": "eduproject",
+  "version": "1.0.0",
+  "description": "the education platform for students",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesuscrypt/EduProject.git"
+  },
+  "author": "mike jesuscrypt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesuscrypt/EduProject/issues"
+  },
+  "homepage": "https://github.com/jesuscrypt/EduProject#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.11",
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}
