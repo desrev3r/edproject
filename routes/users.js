@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const config = require('config');
 const bcrypt = require('bcryptjs');
@@ -25,18 +26,25 @@ router.post(
 
     if (!errors.isEmpty()) {
       return res.status(400).json({
-        errors: errors.array().map((item) => ({ msg: item.msg })),
+        status: 'fail',
+        msg: errors.array().map((item) => item.msg),
       });
     }
 
-    const { name, email, password, progress } = req.body;
+    const {
+      name,
+      email,
+      password,
+      progress,
+    } = req.body;
 
     try {
       let user = await User.findOne({ email });
 
       if (user) {
         return res.status(400).json({
-          errors: [{ msg: 'Пользователь уже существует!' }],
+          status: 'fail',
+          msg: 'Пользователь уже существует!',
         });
       }
 

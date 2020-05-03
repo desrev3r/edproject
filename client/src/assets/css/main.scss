@@ -1,0 +1,28 @@
+@import '_fonts';
+@import '_mixins';
+@import 'variables';
+
+html {
+  font-family: Lato;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Lato, sans-serif;
+  font-weight: 500;
+  color: #4a4a4a;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h5 {
+  font-size: 18px;
+  padding: 12px 20px;
+  font-weight: 500;
+}

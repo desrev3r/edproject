@@ -28,6 +28,11 @@ const UserSchema = new mongoose.Schema({
   progress: {
     solved: [
       {
+        id: {
+          type: String,
+          required: true,
+          unique: true,
+        },
         score: {
           type: Number,
           required: true,

@@ -1,0 +1,100 @@
+@import '../../assets/css/main.scss';
+
+
+.layout {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #f6f8f9;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.view {
+  position: relative;
+  width: 100%;
+  max-width: 1360px;
+  height: auto;
+  min-height: 100vh;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-left: 250px;
+}
+
+.sidebar {
+  position: fixed;
+  max-width: 250px;
+  min-width: 75px;
+  width: 265px;
+  height: 100vh;
+  background: #fff;
+  z-index: 99;
+  box-shadow: $shadow;
+  box-sizing: border-box;
+  padding: 25px 0px;
+  color: #4a4a4a;
+
+  .taskListMenu {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
+    @include scrollbars(5px, color(lightgray), rgb(255, 255, 255));
+
+    ul {
+      list-style: none;
+      li {
+        transition: $ease;
+        a {
+          font-size: 14px;
+          color: #666;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding: 15px 20px;
+          box-sizing: border-box;
+        }
+        &:hover {
+          transition: $ease;
+          background: color(lightgray);
+        }
+      }
+    }
+  }
+}
+
+.alert {
+  position:relative;
+  width: 300px;
+  color: rgb(216, 37, 37);
+  padding: 10px 0px;
+}
+
+.content {
+  position: relative;
+  height: auto;
+  min-height: 260px;
+  box-sizing: border-box;
+  padding: 30px 60px;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 0px 60px;
+}
+
+footer {
+  position: relative;
+  height: 150px;
+  box-sizing: border-box;
+  padding: 0px 60px;
+  background: rgb(36, 36, 36);
+  display: flex;
+  align-items: center;
+  color: #fff;
+}

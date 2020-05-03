@@ -1,0 +1,117 @@
+@import '../../assets/css/main.scss';
+
+.logotype {
+  width: 125px;
+  height: 45px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Lato;
+  font-weight: 700;
+  color: #000;
+  padding: 0px 20px;
+}
+
+.profileBlock {
+  position: relative;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0px 20px;
+  margin: 15px 0px;
+  &:hover {
+    transition: $ease;
+    background: color(lightgray);
+  }
+  a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  span {
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: #4a4a4a;
+
+  label {
+    padding-top: 8px;
+    color: #696969;
+  }
+}
+
+.input {
+  width: auto;
+  max-width: 400px;
+  min-width: 250px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  height: 50px;
+  border-radius: $radius;
+  margin: 5px 0px;
+  margin-top: 10px;
+  outline: none;
+}
+
+.primaryButton, .secondaryButton, .disabledButton {
+  transition: $ease;
+  width: auto;
+  max-width: 300px;
+  min-width: 200px;
+  height: 60px;
+  border-radius: $radius;
+  margin: 5px 0px;
+  margin-top: 20px;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover {
+    transition: $ease;
+  }
+}
+
+.primaryButton {
+  background: color(blue);
+  color: #fff;
+  &:hover {
+  background: color(blue-hover);
+  }
+}
+
+.secondaryButton {
+  background: color(lightgray);
+  color: rgb(44, 44, 44);
+  &:hover {
+    background: color(gray);
+  }
+}
+
+.disabledButton {
+  background: color(lightgray);
+  color: rgb(44, 44, 44);
+  cursor: no-drop;
+}
+

@@ -8,7 +8,16 @@ const TaskSchema = new mongoose.Schema({
   condition: {
     text: {
       type: String,
-      require: true,
+      required: true,
+    },
+    img: {
+      type: String,
+    },
+  },
+  solution: {
+    text: {
+      type: String,
+      required: true,
     },
     img: {
       type: String,
@@ -21,9 +30,16 @@ const TaskSchema = new mongoose.Schema({
   subtopic: {
     type: String,
   },
+  hint: {
+    type: String,
+  },
   answer: {
     type: Number,
     required: true,
+  },
+  likes: {
+    type: Number,
+    default: 0,
   },
 });
 

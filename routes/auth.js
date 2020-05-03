@@ -27,15 +27,12 @@ router.get('/', auth, async (req, res) => {
 
 router.post(
   '/',
-  [
-    check('email', 'Введите корректный Email').isEmail(),
-    check('password', 'Пароль обязателен').exists(),
-  ],
+  [check('email', 'Введите корректный Email').isEmail()],
   async (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ status: 'fail', msg: errors.errors[0].msg });
     }
 
     const { email, password } = req.body;
@@ -46,7 +43,7 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Неверные Email или пароль' }] });
+          .json({ status: 'fail', msg: 'Неверные Email или пароль' });
       }
 
       // Checking password
@@ -55,7 +52,7 @@ router.post(
       if (!isMatch) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Неверные Email или пароль(пароль)' }] });
+          .json({ status: 'fail', msg: 'Неверные Email или пароль' });
       }
 
       const payload = {
@@ -63,6 +60,8 @@ router.post(
           id: user.id,
         },
       };
+
+      const { name, progress, isAdmin, _id } = user;
 
       jwt.sign(
         payload,
@@ -72,7 +71,15 @@ router.post(
           if (err) {
             throw err;
           }
-          res.json({ token });
+
+          res.json({
+            id: _id,
+            name,
+            email,
+            progress,
+            isAdmin,
+            token,
+          });
         },
       );
     } catch (err) {
