@@ -1,18 +1,17 @@
 const User = require('../models/User');
 
 module.exports = async (req, res, next) => {
-  const permission = await User.findOne({ _id: req.user.id });
-
-  if (!permission.isAdmin) {
-    return res.status(403).json({
-      msg: 'Forbidden',
-    });
-  }
-
-  // Verify admin
   try {
+    const permission = await User.findOne({ id: req.user.id });
+
+    if (!permission.isAdmin) {
+      return res.status(403).json({
+        status: 'fail',
+        msg: 'Доступ запрещен',
+      });
+    }
     next();
   } catch (err) {
-    res.status(403).json({ msg: 'Forbidden' });
+    res.status(403).json({ msg: 'Server error' });
   }
 };

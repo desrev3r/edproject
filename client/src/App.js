@@ -9,7 +9,7 @@ import { Sidebar } from './components/layout/sidebar';
 
 import { AuthView } from './views/authView';
 import { SignupView } from './views/signupView';
-import Alert from './components/layout/alert';
+import { AccountView } from './views/accountView';
 
 const App = () => {
   const history = createBrowserHistory();
@@ -28,6 +28,7 @@ const App = () => {
             </Route>
             <Route path="/auth" component={AuthView}/>
             <Route path="/signup" component={SignupView} />
+            <Route path="/account" component={AccountView} />
           </Switch>
         </View>
       </Layout>

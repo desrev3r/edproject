@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './generic.module.scss';
+import { NavLink } from 'react-router-dom'
 
 import { Avatar } from './avatar';
 
 export const ProfileBlock = ({ name, avatar }) => {
-  const url = `/user/:id`;
 
   return (
     <div className={style.profileBlock}>
-      <a href={url}></a>
+      <NavLink to="/account"></NavLink>
       <Avatar img={avatar} />
       <span>{name}</span>
     </div>

@@ -77,8 +77,7 @@
 .primaryButton, .secondaryButton, .disabledButton {
   transition: $ease;
   width: auto;
-  max-width: 300px;
-  min-width: 200px;
+  max-width: 275px;
   height: 60px;
   border-radius: $radius;
   margin: 5px 0px;
@@ -113,5 +112,10 @@
   background: color(lightgray);
   color: rgb(44, 44, 44);
   cursor: no-drop;
+}
+
+.LabelError {
+  color: color(red);
+  font-size: 12px;
 }
 

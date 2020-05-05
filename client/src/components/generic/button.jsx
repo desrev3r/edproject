@@ -14,10 +14,9 @@ export const Button = ({ type, children, disabled }) => {
       break;
     case 'disabled':
       buttonStyle = style.disabledButton;
-      status = 'disabled'
       break;
     default:
-      buttonStyle = style.secondaryButton;
+      buttonStyle = style.primaryButton;
   }
 
   return (

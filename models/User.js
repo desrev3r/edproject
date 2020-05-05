@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   name: {
     type: String,
     required: true,
@@ -12,7 +17,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
   avatar: {
     type: String,
@@ -25,21 +30,6 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  progress: {
-    solved: [
-      {
-        id: {
-          type: String,
-          required: true,
-          unique: true,
-        },
-        score: {
-          type: Number,
-          required: true,
-        }
-      }
-    ]
-  }
 });
 
 module.exports = User = mongoose.model('users', UserSchema);
