@@ -7,7 +7,7 @@ const login = async ({email, password}) => {
     password,
   });
 
-  console.log('Authorised!');
+  console.log('Authorized!');
 
   const { token, id, isAdmin } = user.data;
   localStorage.removeItem('currentUser');
@@ -18,7 +18,15 @@ const login = async ({email, password}) => {
   
 };
 
-const currentUser = localStorage.getItem('currentUser');
+const currentUser = () => {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+
+  if (user !== null && user.hasOwnProperty('token')) {
+    return user
+  } else {
+    return {id: '***********', isAdmin: false}
+  }
+}
 
 const logout = () => {
   localStorage.removeItem('currentUser');

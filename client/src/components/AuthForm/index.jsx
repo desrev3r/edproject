@@ -9,6 +9,9 @@ import propTypes from 'prop-types';
 import { Form } from '../generic/form';
 import { Input } from '../generic/input';
 import { Button } from '../generic/button';
+// import { Input, Button } from 'semantic-ui-react';
+// import 'semantic-ui-css/semantic.min.css';
+
 import Alert from '../layout/alert';
 
 const AuthForm = ({ setAlert }) => {
@@ -46,8 +49,6 @@ const AuthForm = ({ setAlert }) => {
           setAlert(err.msg, 'danger');
         }
       });
-
-      console.log('valid!');
     }
   };
 

@@ -68,7 +68,7 @@ const SignupForm = ({ setAlert }) => {
         if (err) {
           setAlert(err.msg, 'danger');
         } else {
-          console.log(localStorage.getItem('currentUser'));
+          authenticationService.login(newUser);
         }
       });
     }

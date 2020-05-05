@@ -1,12 +1,12 @@
 import React from 'react';
-import { userService } from '../../services/user';
+import { authenticationService } from '../../services/authentication';
 
 export const AccountInfo = () => {
-  const user = userService.getCurrentUser();
-  console.log(user);
+  const user = authenticationService.currentUser();
   return (
     <div>
-      ID: {user.id}<br/>
+      ID: {user.id}
+      <br />
       Права: {user.isAdmin ? 'Администратор' : 'Студент'}
     </div>
   );
