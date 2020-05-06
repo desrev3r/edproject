@@ -1,6 +1,5 @@
 @import '../../assets/css/main.scss';
 
-
 .layout {
   position: relative;
   width: 100%;
@@ -61,10 +60,38 @@
       }
     }
   }
+
+  .userNavMenu {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+
+    a {
+      transition: $ease;
+      color: color(lightblack);
+      margin: 0px;
+      margin-right: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        transition: $ease;
+        background: color(lightgray);
+      }
+    }
+  }
 }
 
 .alert {
-  position:relative;
+  position: relative;
   width: 300px;
   color: rgb(216, 37, 37);
   padding: 10px 0px;
@@ -76,6 +103,7 @@
   min-height: 260px;
   box-sizing: border-box;
   padding: 30px 60px;
+  font-size: 16px;
 }
 
 header {

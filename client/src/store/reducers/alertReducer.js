@@ -1,6 +1,6 @@
 import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
 
-const initialState = [];
+const initialState = [1, 2, 3];
 
 export const alert = (state = initialState, action) => {
   const { type, payload } = action;
@@ -13,4 +13,4 @@ export const alert = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

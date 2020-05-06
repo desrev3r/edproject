@@ -6,8 +6,8 @@ import { rootReducer } from './reducers';
 const composeEnhancers = composeWithDevTools({});
 
 const initialState = {
-  name: 'John',
-  age: 25,
+  loading: false,
+  profile: {name: 'John'},
 };
 
 const middleware = [thunk];  

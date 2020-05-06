@@ -15,6 +15,7 @@ import { Button } from '../generic/button';
 import Alert from '../layout/alert';
 
 const AuthForm = ({ setAlert }) => {
+
   const [formData, setFormData] = useState({
     email: {
       value: '',

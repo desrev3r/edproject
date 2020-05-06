@@ -6,11 +6,9 @@ import { Header } from '../components/layout/header';
 import { Footer } from '../components/layout/footer';
 
 import AuthForm from '../components/AuthForm/';
+import { Redirect } from 'react-router-dom';
 
-export const AuthView = ({history}) => {
-  if (isAuthorized()) {
-    history.push('/');
-  }
+export const AuthView = ({ history }) => {;
 
   return (
     <Fragment>

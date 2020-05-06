@@ -1,49 +1,54 @@
 import axios from 'axios';
 
-const login = async ({email, password}) => {
-  try { 
+const login = async ({ email, password }) => {
+  try {
     const user = await axios.post('/api/auth', {
-    email,
-    password,
-  });
+      email,
+      password,
+    });
 
-  console.log('Authorized!');
+    console.log('Authorized!');
 
-  const { token, id, isAdmin } = user.data;
-  localStorage.removeItem('currentUser');
-  localStorage.setItem('currentUser', JSON.stringify({ id, token, isAdmin }));
+    const { token, id, isAdmin } = user.data;
+    localStorage.removeItem('currentUser');
+    localStorage.setItem('currentUser', JSON.stringify({ id, token, isAdmin }));
+    return true;
   } catch (err) {
     return err.response.data;
   }
-  
 };
 
 const currentUser = () => {
   const user = JSON.parse(localStorage.getItem('currentUser'));
 
   if (user !== null && user.hasOwnProperty('token')) {
-    return user
+    return user;
   } else {
-    return {id: '***********', isAdmin: false}
+    return null;
   }
-}
-
-const logout = () => {
-  localStorage.removeItem('currentUser');
 };
 
-const signup = async ({name, email, password}) => {
+const logout = () => {
+  localStorage.clear();
+  const isUserLoggedOut = localStorage.getItem('currentUser') === null;
+
+  if (isUserLoggedOut) {
+    return true;
+  }
+};
+
+const signup = async ({ name, email, password }) => {
   try {
-    const newUser = await axios.post('/api/users', {
+    await axios.post('/api/users', {
       name,
       email,
-      password
+      password,
     });
-    login(email, password);
+    login(email, password)
   } catch (err) {
     return err.response.data;
   }
-}
+};
 
 export const authenticationService = {
   login,
