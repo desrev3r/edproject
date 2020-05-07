@@ -8,9 +8,9 @@ import {
 import { createBrowserHistory } from 'history';
 import { PrivateRoute } from './components/PrivateRoute';
 import { Role } from './helpers/roles';
-import ReactLoading from 'react-loading';
 import './index.css';
 
+import UserData from './components/User/Data';
 import { Layout } from './components/layout/Layout';
 import { View } from './components/layout/View';
 import { Loader } from './components/generic/Loader';
@@ -30,6 +30,7 @@ const App = () => {
 
   return (
     <Router history={history}>
+      <UserData />
       <Layout>
         <Sidebar />
         <View>

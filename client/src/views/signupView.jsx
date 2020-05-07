@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
+import FadeIn from 'react-fade-in';
+
 import { isAuthorized } from '../services/access';
 
 import { Content } from '../components/layout/Content';
 import { Header } from '../components/layout/Header';
-import { Footer } from '../components/layout/Footer';
-
 import SignupForm from '../components/SignupForm';
 
 export const SignupView = ({ history }) => {
@@ -14,10 +14,12 @@ export const SignupView = ({ history }) => {
 
   return (
     <Fragment>
-      <Header title="Регистрация" />
-      <Content>
-        <SignupForm history={history} />
-      </Content>
+      <FadeIn>
+        <Header title="Регистрация" />
+        <Content>
+          <SignupForm history={history} />
+        </Content>
+      </FadeIn>
     </Fragment>
   );
 };

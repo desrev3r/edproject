@@ -1,4 +1,4 @@
-import { USER_LOGOUT } from './types';
+import { USER_LOGOUT } from '../constants/types';
 
 export const logOut = () => {
   return {

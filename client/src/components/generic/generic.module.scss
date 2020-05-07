@@ -162,6 +162,8 @@
 .loader-container {
   transition: $ease;
   position: absolute;
+  left: 0px;
+  top: 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;

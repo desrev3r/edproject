@@ -1,13 +1,16 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { logOut } from '../../store/actions/logOut';
+import { resetUser } from '../../store/actions/user';
+import { authenticationService } from '../../services/authentication';
+import { isAuthorized } from '../../services/access';
 
-const UserLogOut = ({ history, isLoggedIn, onLogOut }) => {
-  if (!isLoggedIn) {
+const UserLogOut = ({ history, resetUser }) => {
+  if (!isAuthorized) {
     history.push('/');
   } else {
-    console.log('FINALLY LOGOUT!')
-    onLogOut();
+    authenticationService.logout();
+    resetUser();
+    history.push('/');
   }
 
   return <Fragment></Fragment>;
@@ -19,7 +22,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogOut: () => dispatch(logOut()),
+    resetUser: () => dispatch(resetUser()),
   };
 };
 

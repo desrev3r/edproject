@@ -2,15 +2,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { rootReducer } from './reducers';
+import { defaultUser } from './constants/defaultUser';
 
 const composeEnhancers = composeWithDevTools({});
 
 const initialState = {
-  user: {
-    loggedIn: false,
-    name: 'Гость',
-    avatar: 'https://lovely-mebel.ru/template/img/default_avatar.png',
-  },
+  user: defaultUser,
 };
 
 const middleware = [thunk];

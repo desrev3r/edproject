@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { authenticationService } from '../../services/authentication';
-import { isAuthorized } from '../../services/access';
 
 import { setAlert } from '../../store/actions/alert';
 import { getUser } from '../../store/actions/user';
@@ -13,7 +12,7 @@ import { Input } from '../generic/Input';
 import { Button } from '../generic/Button';
 import Alert from '../layout/Alert';
 
-const AuthForm = ({  history, setAlert, getUser }) => {
+const AuthForm = ({ history, setAlert, getUser }) => {
   const [formData, setFormData] = useState({
     authorized: false,
     email: {
@@ -76,25 +75,25 @@ const AuthForm = ({  history, setAlert, getUser }) => {
 
   return (
     <Fragment>
-      <Form onSubmit={onSubmitHandler}>
-        <Input
-          name={email.type}
-          label={email.label}
-          value={email.value}
-          error={!email.valid && email.errorMessage}
-          onChange={(e) => onChangeHandler(e)}
-        />
-        <Input
-          name={password.type}
-          label={password.label}
-          value={password.value}
-          type="password"
-          error={!password.valid && password.errorMessage}
-          onChange={(e) => onChangeHandler(e)}
-        />
-        <Alert />
-        <Button>Войти</Button>
-      </Form>
+        <Form onSubmit={onSubmitHandler}>
+          <Input
+            name={email.type}
+            label={email.label}
+            value={email.value}
+            error={!email.valid && email.errorMessage}
+            onChange={(e) => onChangeHandler(e)}
+          />
+          <Input
+            name={password.type}
+            label={password.label}
+            value={password.value}
+            type="password"
+            error={!password.valid && password.errorMessage}
+            onChange={(e) => onChangeHandler(e)}
+          />
+          <Alert />
+          <Button>Войти</Button>
+        </Form>
     </Fragment>
   );
 };

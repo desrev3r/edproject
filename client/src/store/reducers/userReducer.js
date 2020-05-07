@@ -2,13 +2,12 @@ import {
   GET_USER_STARTED,
   GET_USER_SUCCESS,
   GET_USER_FAILURE,
-} from '../actions/types';
+  RESET_USER,
+} from '../constants/types';
 
-const initialState = {
-  isLoading: false,
-  user: {},
-  isError: null,
-};
+import { defaultUser } from '../constants/defaultUser';
+
+const initialState = defaultUser;
 
 export const user = (state = initialState, action) => {
   const { type, payload } = action;
@@ -40,6 +39,11 @@ export const user = (state = initialState, action) => {
         isLoading: false,
         isError: payload.error,
       };
+    case RESET_USER:
+      return {
+        ...initialState,
+      };
+
     default:
       return state;
   }
