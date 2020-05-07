@@ -1,18 +1,20 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { authenticationService } from '../../services/authentication';
 
 import { setAlert } from '../../store/actions/alert';
+import { getUser } from '../../store/actions/user';
 import { Validator } from '../../helpers/validator';
 import propTypes from 'prop-types';
 
-import { Form } from '../generic/form';
-import { Input } from '../generic/input';
-import { Button } from '../generic/button';
-import Alert from '../layout/alert';
+import { Form } from '../generic/Form';
+import { Input } from '../generic/Input';
+import { Button } from '../generic/Button';
+import Alert from '../layout/Alert';
 
-const SignupForm = ({ setAlert }) => {
+const SignupForm = ({ history, setAlert, getUser }) => {
   const [formData, setFormData] = useState({
+    authorized: false,
     username: {
       value: '',
       type: 'username',
@@ -44,7 +46,7 @@ const SignupForm = ({ setAlert }) => {
   });
 
   const validator = new Validator(formData, setFormData);
-  const { username, email, password, passwordConfirm } = formData;
+  const { username, email, password, passwordConfirm, authorized } = formData;
 
   const validateForm = () => {
     validator.username();
@@ -68,7 +70,13 @@ const SignupForm = ({ setAlert }) => {
         if (err) {
           setAlert(err.msg, 'danger');
         } else {
-          authenticationService.login(newUser);
+          authenticationService.login(newUser).then((res) => {
+            if (res !== true) {
+              setAlert(res.msg, 'danger');
+            } else {
+              setFormData({ ...formData, authorized: true });
+            }
+          });
         }
       });
     }
@@ -86,6 +94,13 @@ const SignupForm = ({ setAlert }) => {
     e.preventDefault();
     validateForm();
   };
+
+  useEffect(() => {
+    if (authorized) {
+      getUser();
+      history.push('/account');
+    }
+  });
 
   return (
     <Fragment>
@@ -131,4 +146,4 @@ SignupForm.propTypes = {
   setAlert: propTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(SignupForm);
+export default connect(null, { setAlert, getUser })(SignupForm);

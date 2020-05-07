@@ -11,17 +11,19 @@ import { Role } from './helpers/roles';
 import ReactLoading from 'react-loading';
 import './index.css';
 
-import { Layout } from './components/layout/layout';
-import { View } from './components/layout/view';
-import Sidebar from './components/layout/sidebar';
+import { Layout } from './components/layout/Layout';
+import { View } from './components/layout/View';
+import { Loader } from './components/generic/Loader';
+import Sidebar from './components/layout/Sidebar';
 
-import { AuthView } from './views/authView';
-import { SignupView } from './views/signupView';
-import { LogOutView } from './views/logOutView';
-import { AccountView } from './views/accountView';
-import { StatsView } from './views/statsView';
-import { SettingsView } from './views/settingsView';
-import { DashboardView } from './views/dashboardView';
+import { IndexView } from './views/IndexView';
+import { AuthView } from './views/AuthView';
+import { SignupView } from './views/SignupView';
+import { LogOutView } from './views/LogOutView';
+import { AccountView } from './views/AccountView';
+import { StatsView } from './views/StatsView';
+import { SettingsView } from './views/SettingsView';
+import { DashboardView } from './views/DashboardView';
 
 const App = () => {
   const history = createBrowserHistory();
@@ -32,16 +34,7 @@ const App = () => {
         <Sidebar />
         <View>
           <Switch>
-            <Route exact path="/">
-              #IndexPage
-              <ReactLoading
-                type="spin"
-                color="coral"
-                height={'50px'}
-                width={'50px'}
-                delay={300}
-              />
-            </Route>
+            <Route exact path="/" component={IndexView} />
             <Route path="/login" component={AuthView} />
             <Route path="/signup" component={SignupView} />
             <PrivateRoute

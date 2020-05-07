@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import { isAuthorized } from '../services/access';
 
-import { Content } from '../components/layout/content';
-import { Header } from '../components/layout/header';
-import { Footer } from '../components/layout/footer';
+import { Content } from '../components/layout/Content';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
 
-import SignupForm from '../components/SignupForm/';
+import SignupForm from '../components/SignupForm';
 
-export const SignupView = ({history}) => {
+export const SignupView = ({ history }) => {
   if (isAuthorized()) {
     history.push('/');
   }
@@ -16,7 +16,7 @@ export const SignupView = ({history}) => {
     <Fragment>
       <Header title="Регистрация" />
       <Content>
-        <SignupForm />
+        <SignupForm history={history} />
       </Content>
     </Fragment>
   );

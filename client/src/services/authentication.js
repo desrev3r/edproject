@@ -7,8 +7,6 @@ const login = async ({ email, password }) => {
       password,
     });
 
-    console.log('Authorized!');
-
     const { token, id, isAdmin } = user.data;
     localStorage.removeItem('currentUser');
     localStorage.setItem('currentUser', JSON.stringify({ id, token, isAdmin }));

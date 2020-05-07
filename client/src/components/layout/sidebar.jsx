@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { logOut } from '../../store/actions/logOut';
 import { isAuthorized } from '../../services/access';
 
 import { NavLink } from 'react-router-dom';
@@ -10,29 +11,16 @@ import {
 } from 'react-icons/ai';
 import style from './layout.module.scss';
 
-import { Logotype } from '../generic/logotype';
-import { ProfileBlock } from '../generic/profileBlock';
+import { Logotype } from '../generic/Logotype';
+import { ProfileBlock } from '../generic/ProfileBlock';
 
-const Sidebar = ({profile}) => {
-
-  
-  const { id, name, avatar, total } = profile;
+const Sidebar = ({ user, onLogOut }) => {
+  const { name, avatar } = user;
 
   return (
     <div className={style.sidebar}>
       <Logotype />
-
-      {isAuthorized() ? (
-        <ProfileBlock
-          name={name}
-          avatar={avatar}
-        />
-      ) : (
-        <ProfileBlock
-          name="Гость"
-          avatar="https://lovely-mebel.ru/template/img/default_avatar.png"
-        />
-      )}
+      <ProfileBlock name={name} avatar={avatar} />
 
       <h5>Задачи</h5>
       <div className={style.taskListMenu}>
@@ -81,9 +69,9 @@ const Sidebar = ({profile}) => {
   );
 };
 
-
 const mapStateToProps = (state) => ({
-  profile: state.profile,
+  user: state.user,
 });
+
 
 export default connect(mapStateToProps)(Sidebar);

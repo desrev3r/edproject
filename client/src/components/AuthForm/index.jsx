@@ -1,22 +1,21 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { authenticationService } from '../../services/authentication';
+import { isAuthorized } from '../../services/access';
 
 import { setAlert } from '../../store/actions/alert';
+import { getUser } from '../../store/actions/user';
 import { Validator } from '../../helpers/validator';
 import propTypes from 'prop-types';
 
-import { Form } from '../generic/form';
-import { Input } from '../generic/input';
-import { Button } from '../generic/button';
-// import { Input, Button } from 'semantic-ui-react';
-// import 'semantic-ui-css/semantic.min.css';
+import { Form } from '../generic/Form';
+import { Input } from '../generic/Input';
+import { Button } from '../generic/Button';
+import Alert from '../layout/Alert';
 
-import Alert from '../layout/alert';
-
-const AuthForm = ({ setAlert }) => {
-
+const AuthForm = ({  history, setAlert, getUser }) => {
   const [formData, setFormData] = useState({
+    authorized: false,
     email: {
       value: '',
       type: 'email',
@@ -34,7 +33,7 @@ const AuthForm = ({ setAlert }) => {
   });
 
   const validator = new Validator(formData, setFormData);
-  const { username, email, password, passwordConfirm } = formData;
+  const { username, email, password, passwordConfirm, authorized } = formData;
   const validateForm = () => {
     validator.email();
     validator.password();
@@ -45,9 +44,11 @@ const AuthForm = ({ setAlert }) => {
         password: password.value,
       };
 
-      authenticationService.login(userData).then((err) => {
-        if (err) {
-          setAlert(err.msg, 'danger');
+      authenticationService.login(userData).then((res) => {
+        if (res !== true) {
+          setAlert(res.msg, 'danger');
+        } else {
+          setFormData({ ...formData, authorized: true });
         }
       });
     }
@@ -65,6 +66,13 @@ const AuthForm = ({ setAlert }) => {
     e.preventDefault();
     validateForm();
   };
+
+  useEffect(() => {
+    if (authorized) {
+      getUser();
+      history.push('/account');
+    }
+  });
 
   return (
     <Fragment>
@@ -95,4 +103,4 @@ AuthForm.propTypes = {
   setAlert: propTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(AuthForm);
+export default connect(null, { setAlert, getUser })(AuthForm);

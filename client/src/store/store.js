@@ -6,11 +6,14 @@ import { rootReducer } from './reducers';
 const composeEnhancers = composeWithDevTools({});
 
 const initialState = {
-  loading: false,
-  profile: {name: 'John'},
+  user: {
+    loggedIn: false,
+    name: 'Гость',
+    avatar: 'https://lovely-mebel.ru/template/img/default_avatar.png',
+  },
 };
 
-const middleware = [thunk];  
+const middleware = [thunk];
 
 const store = createStore(
   rootReducer,

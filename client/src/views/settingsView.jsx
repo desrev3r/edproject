@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
-import { Content } from '../components/layout/content';
-import { Header } from '../components/layout/header';
-import { AccountInfo } from '../components/Account/info';
+import { Content } from '../components/layout/Content';
+import { Header } from '../components/layout/Header';
+import { AccountInfo } from '../components/Account/Info';
 
 export const SettingsView = () => (
   <Fragment>

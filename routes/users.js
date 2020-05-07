@@ -4,12 +4,11 @@ const router = express.Router();
 const config = require('config');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const uuid = require('uuid');
-//const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
 
 const User = require('../models/User');
+const Profile = require('../models/Profile');
 
 // @route POST api/users
 // @desc Get All Users
@@ -43,6 +42,8 @@ router.post('/', async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
+    
+    // Creating User
     let user = await User.findOne({ email });
 
     if (user) {
@@ -53,7 +54,6 @@ router.post('/', async (req, res) => {
     }
 
     user = new User({
-      id: uuid.v4(),
       name,
       email,
       password,
@@ -64,6 +64,15 @@ router.post('/', async (req, res) => {
     user.password = await bcrypt.hash(password, salt);
 
     await user.save();
+
+    // Creating Profile
+    const profileFields = {
+      user: user.id,
+      experience: { tasks: [] },
+    };
+
+    const profile = new Profile(profileFields);
+    await profile.save();
 
     // Returning Token
     const payload = {

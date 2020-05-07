@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import style from './generic.module.scss';
-import { LabelError } from '../generic/labelError';
+import { LabelError } from './LabelError';
 
 export const Input = ({
   name,

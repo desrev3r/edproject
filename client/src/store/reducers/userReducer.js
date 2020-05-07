@@ -1,25 +1,29 @@
 import {
-  GET_PROFILE_STARTED,
-  GET_PROFILE_SUCCESS,
-  GET_PROFILE_FAILURE,
+  GET_USER_STARTED,
+  GET_USER_SUCCESS,
+  GET_USER_FAILURE,
 } from '../actions/types';
 
 const initialState = {
   isLoading: false,
-  profile: {},
+  user: {},
   isError: null,
 };
 
-export const profile = (state = initialState, action) => {
+export const user = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case GET_PROFILE_STARTED:
+    case GET_USER_STARTED:
       return {
         ...state,
         isLoading: true,
       };
-    case GET_PROFILE_SUCCESS:
-      const { user: {_id, name}, experience, avatar } = payload;
+    case GET_USER_SUCCESS:
+      const {
+        user: { _id, name },
+        experience,
+        avatar,
+      } = payload;
       return {
         ...state,
         id: _id,
@@ -30,7 +34,7 @@ export const profile = (state = initialState, action) => {
         isLoading: false,
         isError: null,
       };
-    case GET_PROFILE_FAILURE:
+    case GET_USER_FAILURE:
       return {
         ...state,
         isLoading: false,
