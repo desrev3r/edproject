@@ -1,17 +1,11 @@
 import React, { Fragment } from 'react';
 import FadeIn from 'react-fade-in';
 
-import { isAuthorized } from '../services/access';
-
 import { Content } from '../components/layout/Content';
 import { Header } from '../components/layout/Header';
 import SignupForm from '../components/SignupForm';
 
 export const SignupView = ({ history }) => {
-  if (isAuthorized()) {
-    history.push('/');
-  }
-
   return (
     <Fragment>
       <FadeIn>

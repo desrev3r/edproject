@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { authenticationService } from '../../services/authentication';
+import authenticationService from '../../services/authentication';
 
 import {
   GET_USER_STARTED,
@@ -39,24 +39,3 @@ export const resetUser = () => {
     type: RESET_USER,
   };
 };
-
-/*
-const getUserStarted = () => ({
-  type: GET_USER_STARTED,
-});
-
-const getUserSuccess = (profile) => ({
-  type: GET_USER_SUCCESS,
-  payload: {
-    ...profile,
-  },
-});
-
-const getUserFailure = (error) => ({
-  type: GET_USER_FAILURE,
-  payload: {
-    error,
-  },
-});
-
-*/

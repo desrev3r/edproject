@@ -81,6 +81,10 @@
   display: flex;
   flex-direction: column;
   color: #4a4a4a;
+  margin: 15px auto;
+  .button {
+    margin-top: 15px;
+  }
 
   label {
     padding-top: 8px;
@@ -101,27 +105,40 @@
   outline: none;
 }
 
-.primaryButton,
-.secondaryButton,
-.disabledButton {
+.button {
   transition: $ease;
+  position: relative;
   width: auto;
-  max-width: 275px;
+  max-width: 225px;
   height: 60px;
   border-radius: $radius;
-  margin: 5px 0px;
-  margin-top: 20px;
+  margin: 5px;
   outline: none;
+  padding: 0px 22px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     transition: $ease;
   }
+  a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+  }
+  svg {
+    margin-right: 8px;
+    font-size: 1.25em;
+  }
 }
 
-.primaryButton {
+.button--primary {
   background: color(blue);
   color: #fff;
   &:hover {
@@ -129,7 +146,7 @@
   }
 }
 
-.secondaryButton {
+.button--secondary {
   background: color(lightgray);
   color: rgb(44, 44, 44);
   &:hover {
@@ -137,10 +154,15 @@
   }
 }
 
-.disabledButton {
+.button--disabled {
   background: color(lightgray);
   color: rgb(44, 44, 44);
   cursor: no-drop;
+}
+.button__icon {
+  background: red;
+  width: 15px;
+  height: 15px;
 }
 
 .LabelError {
@@ -182,5 +204,46 @@
   span {
     color: color(lightblack);
     font-size: 12px;
+  }
+}
+
+.task-card, .profile-card{
+  transition: $ease;
+  position: relative;
+  width: 100%;
+  height: 95px;
+  background: color(white);
+  border-radius: $radius;
+  box-shadow: $shadow;
+  margin: 12px auto;
+  padding: 0px 25px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  &:hover {
+    transition: $ease;
+    background: color(white-hover);
+  }
+  a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+  }
+  h3 {
+    font-size: 22px;
+    width: 100%;
+    max-width: 500px;
+    font-weight: 500;
+    color: color(lightblack);
+  }
+  .task-card__topic {
+    width: 100%;
+    max-width: 250px;
+    overflow: hidden;
   }
 }

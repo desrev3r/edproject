@@ -1,22 +1,23 @@
 import React from 'react';
-import style from './generic.module.scss';
+import { NavLink } from 'react-router-dom';
+import styles from './generic.module.scss';
 
-export const Button = ({ type, children, disabled }) => {
-  let buttonStyle = '';
+export const Button = ({ children, type}) => {
+  let buttonStyle = `${styles.button} `;
   let status = '';
 
   switch (type) {
     case 'primary':
-      buttonStyle = style.primaryButton;
+      buttonStyle += styles['button--primary'];
       break;
     case 'secondary':
-      buttonStyle = style.secondaryButton;
+      buttonStyle += styles['button--secondary'];
       break;
     case 'disabled':
-      buttonStyle = style.disabledButton;
+      buttonStyle += styles['button--disabled'];
       break;
     default:
-      buttonStyle = style.primaryButton;
+      buttonStyle += styles['button--primary'];
   }
 
   return (

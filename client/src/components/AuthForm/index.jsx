@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authenticationService } from '../../services/authentication';
+import authenticationService from '../../services/authentication';
 
-import { setAlert } from '../../store/actions/alert';
+import { setAlert, removeAlert } from '../../store/actions/alert';
 import { getUser } from '../../store/actions/user';
 import { Validator } from '../../helpers/validator';
 import propTypes from 'prop-types';
@@ -12,7 +13,7 @@ import { Input } from '../generic/Input';
 import { Button } from '../generic/Button';
 import Alert from '../layout/Alert';
 
-const AuthForm = ({ history, setAlert, getUser }) => {
+const AuthForm = ({ history, setAlert, removeAlert, getUser }) => {
   const [formData, setFormData] = useState({
     authorized: false,
     email: {
@@ -71,29 +72,32 @@ const AuthForm = ({ history, setAlert, getUser }) => {
       getUser();
       history.push('/account');
     }
+    
+    removeAlert();
   });
 
   return (
     <Fragment>
-        <Form onSubmit={onSubmitHandler}>
-          <Input
-            name={email.type}
-            label={email.label}
-            value={email.value}
-            error={!email.valid && email.errorMessage}
-            onChange={(e) => onChangeHandler(e)}
-          />
-          <Input
-            name={password.type}
-            label={password.label}
-            value={password.value}
-            type="password"
-            error={!password.valid && password.errorMessage}
-            onChange={(e) => onChangeHandler(e)}
-          />
-          <Alert />
-          <Button>Войти</Button>
-        </Form>
+      <Form onSubmit={onSubmitHandler}>
+        <Input
+          name={email.type}
+          label={email.label}
+          value={email.value}
+          error={!email.valid && email.errorMessage}
+          onChange={(e) => onChangeHandler(e)}
+        />
+        <Input
+          name={password.type}
+          label={password.label}
+          value={password.value}
+          type="password"
+          error={!password.valid && password.errorMessage}
+          onChange={(e) => onChangeHandler(e)}
+        />
+        <Alert />
+        <Button>Войти</Button>
+      </Form>
+      <NavLink to="/signup">Перейти к регистрации</NavLink>
     </Fragment>
   );
 };
@@ -102,4 +106,4 @@ AuthForm.propTypes = {
   setAlert: propTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert, getUser })(AuthForm);
+export default connect(null, { setAlert, removeAlert, getUser })(AuthForm);

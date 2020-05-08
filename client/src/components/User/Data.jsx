@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../../store/actions/user';
-import { isAuthorized } from '../../services/access';
+import authenticationService from '../../services/authentication';
 
 const UserData = ({ getUserData }) => {
   useEffect(() => {
-    if (isAuthorized()) {
+    if (authenticationService.isLogin()) {
       getUserData();
     }
   }, 0);

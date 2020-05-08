@@ -1,6 +1,8 @@
 
-$ease: all ease .45s;
-$shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.08);
+$ease: all ease .5s;
+$ease-fast: all ease .3s;
+$ease-slow: all ease .7s;
+$shadow: 0 10px 25px 25px rgba(0, 0, 0, 0.025);
 $radius: 5px;
 
 $colors: (
@@ -9,5 +11,7 @@ $colors: (
   lightblack: #4a4a4a,
   blue: #48A1E6,
   blue-hover: rgb(58, 145, 212),
-  red: rgb(218, 58, 58)
+  red: rgb(218, 58, 58),
+  white: #fff,
+  white-hover: rgb(249, 249, 249),
 )

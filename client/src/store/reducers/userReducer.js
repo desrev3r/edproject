@@ -5,6 +5,7 @@ import {
   RESET_USER,
 } from '../constants/types';
 
+import authenticationService from '../../services/authentication';
 import { defaultUser } from '../constants/defaultUser';
 
 const initialState = defaultUser;
@@ -19,17 +20,21 @@ export const user = (state = initialState, action) => {
       };
     case GET_USER_SUCCESS:
       const {
-        user: { _id, name },
+        user: { _id, name, email, isAdmin },
         experience,
         avatar,
       } = payload;
+
       return {
         ...state,
         id: _id,
         name,
+        email,
         avatar,
         tasks: experience.tasks,
         total: experience.tasks.length,
+        isAdmin,
+        isLogin: authenticationService.isLogin(),
         isLoading: false,
         isError: null,
       };

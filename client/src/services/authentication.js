@@ -42,15 +42,30 @@ const signup = async ({ name, email, password }) => {
       email,
       password,
     });
-    login(email, password)
+    login(email, password);
   } catch (err) {
     return err.response.data;
   }
 };
 
-export const authenticationService = {
+const isLogin = () => {
+  const loggedUser = currentUser();
+  if (
+    loggedUser !== null &&
+    loggedUser !== undefined &&
+    loggedUser.hasOwnProperty('token')
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const authenticationService = {
   login,
   logout,
   signup,
   currentUser,
+  isLogin,
 };
+
+export default authenticationService;

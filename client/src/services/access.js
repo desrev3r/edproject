@@ -1,22 +1,14 @@
-export const isAuthorized = () => {
-  const user = JSON.parse(localStorage.getItem('currentUser'));
+import authenticationService from './authentication';
 
-  if (user !== null && user.hasOwnProperty('token')) {
-    return true;
-  } else {
-    return false;
+const isAdmin = () => {
+  const user = authenticationService.currentUser();
+  if (user !== null && user !== undefined) {
+    return user.isAdmin;
   }
 };
 
-export const isAdmin = () => {
-  if (isAuthorized()) {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-
-    if (!user.isAdmin) {
-      return false;
-    }
-    return true;
-  } else {
-    return false;
-  }
+const accessService = {
+  isAdmin,
 };
+
+export default accessService;

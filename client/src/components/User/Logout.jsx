@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { resetUser } from '../../store/actions/user';
-import { authenticationService } from '../../services/authentication';
-import { isAuthorized } from '../../services/access';
+import authenticationService from '../../services/authentication';
 
 const UserLogOut = ({ history, resetUser }) => {
-  if (!isAuthorized) {
+  if (!authenticationService.isLogin()) {
     history.push('/');
   } else {
     authenticationService.logout();

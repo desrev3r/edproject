@@ -9,7 +9,8 @@ export const alert = (state = initialState, action) => {
     case SET_ALERT:
       return [payload];
     case REMOVE_ALERT:
-      return state.filter((alert) => alert.id !== payload);
+      return [...initialState];
+
     default:
       return state;
   }

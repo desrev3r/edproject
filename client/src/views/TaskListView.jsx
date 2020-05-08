@@ -1,15 +1,17 @@
 import React, { Fragment } from 'react';
 import FadeIn from 'react-fade-in';
+import TaskList from '../components/Task/List';
 
 import { Content } from '../components/layout/Content';
 import { Header } from '../components/layout/Header';
-import { Footer } from '../components/layout/Footer';
 
-export const DashboardView = () => (
+export const TaskListView = () => (
   <Fragment>
     <FadeIn>
-      <Header title="Панель управления" />
-      <Content>#AdminAccess</Content>
+      <Header title="Задачи" />
+      <Content>
+        <TaskList />
+      </Content>
     </FadeIn>
   </Fragment>
 );

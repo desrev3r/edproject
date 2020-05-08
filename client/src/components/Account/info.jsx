@@ -2,10 +2,8 @@ import React, { Fragment, useEffect } from 'react';
 import FadeIn from 'react-fade-in';
 import { connect } from 'react-redux';
 import { getUser } from '../../store/actions/user';
-import { Conditional } from '../Conditional';
 
 import { Avatar } from '../generic/Avatar';
-import { Loader } from '../generic/Loader';
 import { ProfileInfoList } from '../generic/ProfileInfoList';
 
 const AccountInfo = ({ user, getUserData }) => {
@@ -16,7 +14,7 @@ const AccountInfo = ({ user, getUserData }) => {
   const { id, name, avatar, total, isLoading } = user;
 
   return (
-    <Conditional if={!isLoading} else={<Loader />}>
+    // <Conditional if={!isLoading} else={<Loader />}>
       <Fragment>
         <FadeIn>
           <Avatar img={avatar} />
@@ -29,7 +27,6 @@ const AccountInfo = ({ user, getUserData }) => {
           </ProfileInfoList>
         </FadeIn>
       </Fragment>
-    </Conditional>
   );
 };
 

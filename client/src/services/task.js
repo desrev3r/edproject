@@ -1,0 +1,15 @@
+import axios from 'axios';
+import { authenticationService } from './authentication';
+
+const getAllTasks = async (id) => {
+  try {
+    const taskList = await axios.get(`/api/tasks`);
+    return taskList;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const taskService = {
+  getAllTasks,
+};

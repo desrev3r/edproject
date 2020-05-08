@@ -1,18 +1,21 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authenticationService } from '../../services/authentication';
 
-import { setAlert } from '../../store/actions/alert';
-import { getUser } from '../../store/actions/user';
-import { Validator } from '../../helpers/validator';
+
 import propTypes from 'prop-types';
+import authenticationService from '../../services/authentication';
+import { Validator } from '../../helpers/validator';
+
+import { setAlert, removeAlert } from '../../store/actions/alert';
+import { getUser } from '../../store/actions/user';
 
 import { Form } from '../generic/Form';
 import { Input } from '../generic/Input';
 import { Button } from '../generic/Button';
 import Alert from '../layout/Alert';
 
-const SignupForm = ({ history, setAlert, getUser }) => {
+const SignupForm = ({ history, setAlert, removeAlert, getUser }) => {
   const [formData, setFormData] = useState({
     authorized: false,
     username: {
@@ -100,6 +103,7 @@ const SignupForm = ({ history, setAlert, getUser }) => {
       getUser();
       history.push('/account');
     }
+    removeAlert();
   });
 
   return (
@@ -138,6 +142,7 @@ const SignupForm = ({ history, setAlert, getUser }) => {
         <Alert />
         <Button>Зарегистрироваться</Button>
       </Form>
+      <NavLink to="/login">Войти в аккаунт</NavLink>
     </Fragment>
   );
 };
@@ -146,4 +151,4 @@ SignupForm.propTypes = {
   setAlert: propTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert, getUser })(SignupForm);
+export default connect(null, { setAlert, removeAlert, getUser })(SignupForm);

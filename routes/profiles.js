@@ -4,7 +4,6 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 
 const Profile = require('../models/Profile');
-//const User = require('../models/User');
 
 // @route GET api/profile/me
 // @desc Get current users profile
@@ -14,7 +13,7 @@ router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.user.id,
-    }).populate('user', ['name', 'avatar']);
+    }).populate('user', ['name', 'avatar', 'email', 'isAdmin']);
 
     if (!profile) {
       return res
@@ -29,6 +28,27 @@ router.get('/me', auth, async (req, res) => {
   }
 });
 
+// @route GET api/profile/
+// @desc Get All Profiles
+// @access Public
+
+router.get('/', async (req, res) => {
+  try {
+    const profiles = await Profile.find({}).populate('user', ['name', 'avatar', 'email']);
+
+    if (!profiles) {
+      return res
+        .status(400)
+        .json({ msg: 'Ни один пользователь не найден' });
+    }
+
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route GET api/profile/:user_id
 // @desc Get Profile By ID
 // @access Public
@@ -37,7 +57,7 @@ router.get('/:user_id', async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.params.user_id,
-    }).populate('user', ['name', 'avatar']);
+    }).populate('user', ['name', 'avatar', 'email', 'isAdmin']);
 
     if (!profile) {
       return res.status(400).json({ msg: 'Профиль не найден' });

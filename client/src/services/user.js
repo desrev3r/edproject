@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { authenticationService } from './authentication';
+import authenticationService from './authentication';
 
 const getCurrentProfile = async () => {
   try {
@@ -8,6 +8,15 @@ const getCurrentProfile = async () => {
       headers: { 'x-auth-token': token },
     });
     return currentProfile;
+  } catch (err) {
+    console.log(err.response.data);
+  }
+};
+
+const getAllProfiles = async () => {
+  try {
+    const profilesList = await axios.get('/api/profile');
+    return profilesList;
   } catch (err) {
     console.log(err.response.data);
   }
@@ -25,4 +34,5 @@ const getProfileByID = async (id) => {
 export const userService = {
   getProfileByID,
   getCurrentProfile,
+  getAllProfiles,
 };

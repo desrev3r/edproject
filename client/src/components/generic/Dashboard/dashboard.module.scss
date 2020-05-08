@@ -1,0 +1,40 @@
+@import '../../../assets/css/main.scss';
+
+.dashboard-section-nav {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dashboard-section-nav__card {
+  transition: $ease-fast;
+  position: relative;
+  width: 300px;
+  height: 250px;
+  border-radius: $radius;
+  background: #fff;
+  box-shadow: $shadow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px;
+  margin-right: 15px;
+  &:hover {
+    transition: $ease-fast;
+    transform: translateY(-5px);
+  }
+  a {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
