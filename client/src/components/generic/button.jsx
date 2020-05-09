@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './generic.module.scss';
 
-export const Button = ({ children, type}) => {
+export const Button = ({ children, type, to, onClick}) => {
   let buttonStyle = `${styles.button} `;
   let status = '';
 
@@ -20,8 +20,10 @@ export const Button = ({ children, type}) => {
       buttonStyle += styles['button--primary'];
   }
 
+
   return (
-    <button className={buttonStyle} disabled={status}>
+    <button className={buttonStyle} disabled={status} onClick={onClick}>
+      { to && <NavLink to={to}></NavLink>}
       {children}
     </button>
   );

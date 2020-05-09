@@ -7,12 +7,13 @@ import {
   AiOutlineSetting,
   AiOutlineLineChart,
   AiOutlineUnorderedList,
-  AiOutlineControl
+  AiOutlineControl,
 } from 'react-icons/ai';
 import styles from './layout.module.scss';
 
 import { Logotype } from '../generic/Logotype';
 import { ProfileBlock } from '../generic/ProfileBlock';
+import { IconLink } from '../generic/IconLink';
 
 const Sidebar = ({ user }) => {
   const { name, avatar, isAdmin } = user;
@@ -54,35 +55,39 @@ const Sidebar = ({ user }) => {
           </li>
         </ul>
       </div>
-      { !isAdmin ? (
+      {!isAdmin ? (
         <div className={styles['user-nav-menu']}>
-          <NavLink to="/tasks">
-            <AiOutlineUnorderedList size="1.4em" />
-          </NavLink>
-          <NavLink to="/stats">
-            <AiOutlineLineChart size="1.4em" />
-          </NavLink>
-          <NavLink to="/settings">
-            <AiOutlineSetting size="1.4em" />
-          </NavLink>
-          <NavLink to="/logout">
-            <AiOutlineLogout size="1.4em" />
-          </NavLink>
+          <IconLink to="/tasks">
+            <AiOutlineUnorderedList />
+          </IconLink>
+
+          <IconLink to="/stats">
+            <AiOutlineLineChart />
+          </IconLink>
+
+          <IconLink to="/settings">
+            <AiOutlineSetting />
+          </IconLink>
+          <IconLink to="/logout">
+            <AiOutlineLogout />
+          </IconLink>
         </div>
       ) : (
         <div className={styles['user-nav-menu']}>
-          <NavLink to="/dashboard">
-            <AiOutlineControl size="1.4em" />
-          </NavLink>
-          <NavLink to="/dashboard/students">
-            <AiOutlineLineChart size="1.4em" />
-          </NavLink>
-          <NavLink to="/settings">
-            <AiOutlineSetting size="1.4em" />
-          </NavLink>
-          <NavLink to="/logout">
-            <AiOutlineLogout size="1.4em" />
-          </NavLink>
+          <IconLink to="/dashboard">
+            <AiOutlineControl />
+          </IconLink>
+
+          <IconLink to="/dashboard/students">
+            <AiOutlineLineChart />
+          </IconLink>
+
+          <IconLink to="/settings">
+            <AiOutlineSetting />
+          </IconLink>
+          <IconLink to="/logout">
+            <AiOutlineLogout />
+          </IconLink>
         </div>
       )}
     </div>

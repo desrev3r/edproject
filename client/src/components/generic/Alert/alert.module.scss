@@ -1,0 +1,31 @@
+@import '../../../assets//css/main.scss';
+
+
+.alert-success, .alert-error, .alert-warning {
+  transition: $ease;
+  position: relative;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  border-radius: $radius;
+  margin: 8px auto;
+  h6 {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  span {
+    font-weight: 300;
+    display: block;
+  }
+}
+
+.alert-success {
+  background: rgb(213, 255, 220);
+}
+.alert-warning {
+  background: rgb(254, 255, 213);
+}
+
+.alert-error {
+  background: rgb(255, 213, 213);
+}

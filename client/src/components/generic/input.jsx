@@ -9,6 +9,7 @@ export const Input = ({
   error,
   placeholder,
   type,
+  max,
   onChange,
 }) => {
   const inputType = type || 'text';
@@ -24,6 +25,7 @@ export const Input = ({
         type={inputType}
         value={value}
         placeholder={placeholder}
+        maxlength={max}
         onChange={onChange}
       />
     </Fragment>

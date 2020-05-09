@@ -19,6 +19,7 @@ import { IndexView } from './views/IndexView';
 import { AuthView } from './views/AuthView';
 import { SignupView } from './views/SignupView';
 import { TaskListView } from './views/TaskListView';
+import { TaskSingleView } from './views/TaskSingleView';
 
 import { LogOutView } from './views/LogOutView';
 import { AccountView } from './views/AccountView';
@@ -42,7 +43,8 @@ const App = () => {
             <Route exact path="/" component={IndexView} />
             <Route path="/login" component={AuthView} />
             <Route path="/signup" component={SignupView} />
-            <Route path="/tasks" component={TaskListView} />
+            <Route exact path="/tasks" component={TaskListView} />
+            <Route path="/tasks/:taskId" component={TaskSingleView} />
             <PrivateRoute
               path="/logout"
               roles={Role.User}

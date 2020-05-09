@@ -51,4 +51,17 @@ export class Validator {
     }
     this.setFormData({ ...data });
   }
+
+  
+  checkTaskAnswer(rightAnswer) {
+    let data = { ...this.formData };
+    let { answer } = data;
+
+    if (+answer.value !== +rightAnswer) {
+      answer.valid = false;
+    } else {
+      answer.valid = true;
+    }
+    this.setFormData({ ...data });
+  }
 }

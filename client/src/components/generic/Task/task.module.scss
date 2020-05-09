@@ -1,0 +1,72 @@
+@import '../../../assets/css/main.scss';
+
+.task-wrapper {
+  position: relative;
+  width: auto;
+  background: #fff;
+  box-shadow: $shadow;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: $radius;
+  h2 {
+    margin-bottom: 10px; 
+  }
+}
+
+.task-condition {
+  position: relative;
+  padding: 15px 0px;
+  p {
+    padding: 10px 0px;
+    font-size: 16px;
+    line-height: 1.5em;
+  }
+  img {
+    border: 2px solid color(lightgray);
+    width: auto;
+    height: 250px;
+    margin: 10px 0px;
+  }
+}
+
+.task-card,
+.profile-card {
+  transition: $ease;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  max-height: 350px;
+  background: color(white);
+  border-radius: $radius;
+  box-shadow: $shadow;
+  margin: 12px auto;
+  padding: 30px 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    transition: $ease;
+    background: color(white-hover);
+  }
+  a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+  }
+  h3 {
+    font-size: 22px;
+    width: 100%;
+    max-width: 500px;
+    font-weight: 500;
+    color: color(lightblack);
+  }
+  .task-card__topic {
+    width: 100%;
+    max-width: 250px;
+    overflow: hidden;
+  }
+}

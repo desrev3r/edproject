@@ -10,6 +10,16 @@ const getAllTasks = async (id) => {
   }
 };
 
+const getTaskById = async (id) => {
+  try {
+    const task = await axios.get(`/api/tasks/${id}`);
+    return task;
+  } catch (err) {
+    return err;
+  }
+};
+
 export const taskService = {
   getAllTasks,
+  getTaskById
 };

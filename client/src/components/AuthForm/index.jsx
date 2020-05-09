@@ -57,8 +57,7 @@ const AuthForm = ({ history, setAlert, removeAlert, getUser }) => {
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     let form = { ...formData };
-    let input = form[name];
-    input.value = value;
+    form[name].value = value;
     setFormData({ ...form });
   };
 

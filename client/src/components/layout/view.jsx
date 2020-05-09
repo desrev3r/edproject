@@ -1,4 +1,4 @@
 import React from 'react';
-import style from './layout.module.scss';
+import styles from './layout.module.scss';
 
-export const View = (props) => <div className={style.view}>{props.children}</div>;
+export const View = ({children}) => <div className={styles.view}>{children}</div>;
