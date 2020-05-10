@@ -4,9 +4,9 @@ import { AiOutlineDownload } from 'react-icons/ai';
 import { userService } from '../../services/user';
 import { TaskItem } from '../Task/Item';
 
-import { FlexBlock } from '../../components/layout/FlexBlock';
-import { Block } from '../../components/layout/Block';
-import { Button } from '../../components/generic/Button';
+import { FlexBlock } from '../layout/FlexBlock';
+import { Block } from '../layout/Block';
+import { Button } from '../generic/Button';
 
 const ProfileList = ({ user }) => {
   const [profiles, setProfiles] = useState([]);

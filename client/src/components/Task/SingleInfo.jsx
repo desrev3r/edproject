@@ -14,17 +14,17 @@ import { taskService } from '../../services/task';
 import { Validator } from '../../helpers/validator';
 import { shortId } from '../../helpers/format';
 
-import { TaskWrapper } from '../../components/generic/Task/Wrapper';
-import { TaskCondition } from '../../components/generic/Task/Condition';
+import { TaskWrapper } from '../generic/Task/Wrapper';
+import { TaskCondition } from '../generic/Task/Condition';
 
-import { FlexBlock } from '../../components/layout/FlexBlock';
-import { Block } from '../../components/layout/Block';
+import { FlexBlock } from '../layout/FlexBlock';
+import { Block } from '../layout/Block';
 import { Form } from '../generic/Form';
 import { Input } from '../generic/Input';
-import { Button } from '../../components/generic/Button';
-import { IconLink } from '../../components/generic/IconLink';
-import { SuccessAlert } from '../../components/generic/Alert/Success';
-import { WarningAlert } from '../../components/generic/Alert/Warning';
+import { Button } from '../generic/Button';
+import { IconLink } from '../generic/IconLink';
+import { SuccessAlert } from '../generic/Alert/Success';
+import { WarningAlert } from '../generic/Alert/Warning';
 
 const TaskSingleInfo = ({ id }) => {
   const isLogin = authenticationService.isLogin();

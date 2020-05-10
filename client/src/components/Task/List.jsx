@@ -7,9 +7,9 @@ import accessService from '../../services/access';
 import { taskService } from '../../services/task';
 import { TaskCard } from '../generic/Task/Card';
 
-import { FlexBlock } from '../../components/layout/FlexBlock';
-import { Block } from '../../components/layout/Block';
-import { Button } from '../../components/generic/Button';
+import { FlexBlock } from '../layout/FlexBlock';
+import { Block } from '../layout/Block';
+import { Button } from '../generic/Button';
 
 const TaskList = ({ user }) => {
   const isLogin = authenticationService.isLogin();
