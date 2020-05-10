@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authenticationService from '../../services/authentication';
+import authenticationService from './../../services/authentication';
 
 import {
   GET_USER_STARTED,

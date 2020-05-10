@@ -11,9 +11,9 @@ import {
 } from 'react-icons/ai';
 import styles from './layout.module.scss';
 
-import { Logotype } from '../generic/Logotype';
-import { ProfileBlock } from '../generic/ProfileBlock';
-import { IconLink } from '../generic/IconLink';
+import { Logotype } from './../generic/Logotype';
+import { ProfileBlock } from './../generic/ProfileBlock';
+import { IconLink } from './../generic/IconLink';
 
 const Sidebar = ({ user }) => {
   const { name, avatar, isAdmin } = user;

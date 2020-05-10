@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import FadeIn from 'react-fade-in';
-import { shortId } from '../helpers/format';
+import { shortId } from './../helpers/format';
 
 import TaskSingleInfo from './../components/Task/SingleInfo';
 

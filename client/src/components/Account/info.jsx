@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
 import FadeIn from 'react-fade-in';
 import { connect } from 'react-redux';
-import { getUser } from '../../store/actions/user';
+import { getUser } from './../../store/actions/user';
 
-import { Avatar } from '../generic/Avatar';
-import { ProfileInfoList } from '../generic/ProfileInfoList';
+import { Avatar } from './../generic/Avatar';
+import { ProfileInfoList } from './../generic/ProfileInfoList';
 
 const AccountInfo = ({ user, getUserData }) => {
   useEffect(() => {

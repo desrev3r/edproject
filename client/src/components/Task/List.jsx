@@ -2,14 +2,14 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AiOutlineCloudDownload } from 'react-icons/ai';
 
-import authenticationService from '../../services/authentication';
-import accessService from '../../services/access';
-import { taskService } from '../../services/task';
-import { TaskCard } from '../generic/Task/Card';
+import authenticationService from './../../services/authentication';
+import accessService from './../../services/access';
+import { taskService } from './../../services/task';
+import { TaskCard } from './../generic/Task/Card';
 
-import { FlexBlock } from '../layout/FlexBlock';
-import { Block } from '../layout/Block';
-import { Button } from '../generic/Button';
+import { FlexBlock } from './../layout/FlexBlock';
+import { Block } from './../layout/Block';
+import { Button } from './../generic/Button';
 
 const TaskList = ({ user }) => {
   const isLogin = authenticationService.isLogin();

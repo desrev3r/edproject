@@ -8,14 +8,14 @@ import {
 } from 'react-icons/ai';
 import styles from './task.module.scss';
 
-import accessService from '../../../services/access';
-import { shortId } from '../../../helpers/format';
+import accessService from './../../../services/access';
+import { shortId } from './../../../helpers/format';
 
 import { TaskCondition } from './Condition';
-import { FlexBlock } from '../../layout/FlexBlock';
-import { Block } from '../../layout/Block';
-import { IconLink } from '../../generic/IconLink';
-import { Button } from '../../generic/Button';
+import { FlexBlock } from './../../layout/FlexBlock';
+import { Block } from './../../layout/Block';
+import { IconLink } from './../IconLink';
+import { Button } from './../Button';
 
 export const TaskCard = ({ id, title, topic, subtopic, conditionText }) => {
   const isAdmin = accessService.isAdmin;

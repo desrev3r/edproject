@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { resetUser } from '../../store/actions/user';
-import authenticationService from '../../services/authentication';
+import { resetUser } from './../../store/actions/user';
+import authenticationService from './../../services/authentication';
 
 const UserLogOut = ({ history, resetUser }) => {
   if (!authenticationService.isLogin()) {

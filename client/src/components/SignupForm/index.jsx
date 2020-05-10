@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 
 
 import propTypes from 'prop-types';
-import authenticationService from '../../services/authentication';
-import { Validator } from '../../helpers/validator';
+import authenticationService from './../../services/authentication';
+import { Validator } from './../../helpers/validator';
 
-import { setAlert, removeAlert } from '../../store/actions/alert';
-import { getUser } from '../../store/actions/user';
+import { setAlert, removeAlert } from './../../store/actions/alert';
+import { getUser } from './../../store/actions/user';
 
-import { Form } from '../generic/Form';
-import { Input } from '../generic/Input';
-import { Button } from '../generic/Button';
-import Alert from '../layout/Alert';
+import { Form } from './../generic/Form';
+import { Input } from './../generic/Input';
+import { Button } from './../generic/Button';
+import Alert from './../layout/Alert';
 
 const SignupForm = ({ history, setAlert, removeAlert, getUser }) => {
   const [formData, setFormData] = useState({

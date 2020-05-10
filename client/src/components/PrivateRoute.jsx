@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { Role } from '../helpers/roles';
-import authenticationService from '../services/authentication';
-import accessService from '../services/access';
+import { Role } from './../helpers/roles';
+import authenticationService from './../services/authentication';
+import accessService from './../services/access';
 
 export const PrivateRoute = ({ component: Component, roles, ...rest }) => {
   return (

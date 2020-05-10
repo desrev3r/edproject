@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getUser } from '../../store/actions/user';
-import authenticationService from '../../services/authentication';
+import { getUser } from './../../store/actions/user';
+import authenticationService from './../../services/authentication';
 
 const UserData = ({ getUserData }) => {
   useEffect(() => {

@@ -1,17 +1,17 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import authenticationService from '../../services/authentication';
+import authenticationService from './../../services/authentication';
 
-import { setAlert, removeAlert } from '../../store/actions/alert';
-import { getUser } from '../../store/actions/user';
-import { Validator } from '../../helpers/validator';
+import { setAlert, removeAlert } from './../../store/actions/alert';
+import { getUser } from './../../store/actions/user';
+import { Validator } from './../../helpers/validator';
 import propTypes from 'prop-types';
 
-import { Form } from '../generic/Form';
-import { Input } from '../generic/Input';
-import { Button } from '../generic/Button';
-import Alert from '../layout/Alert';
+import { Form } from './../generic/Form';
+import { Input } from './../generic/Input';
+import { Button } from './../generic/Button';
+import Alert from './../layout/Alert';
 
 const AuthForm = ({ history, setAlert, removeAlert, getUser }) => {
   const [formData, setFormData] = useState({
