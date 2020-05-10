@@ -1,5 +1,12 @@
 @import './../../../assets/css/main.scss';
 
+.task-list-container {
+  position: relative;
+  height: auto;
+  min-height: 500px;
+}
+
+
 .task-wrapper {
   position: relative;
   width: auto;
@@ -8,6 +15,7 @@
   padding: 40px;
   box-sizing: border-box;
   border-radius: $radius;
+  min-height: 600px;
   h2 {
     margin-bottom: 10px; 
   }

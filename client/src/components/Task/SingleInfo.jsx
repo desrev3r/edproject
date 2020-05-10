@@ -14,6 +14,9 @@ import { taskService } from './../../services/task';
 import { Validator } from './../../helpers/validator';
 import { shortId } from './../../helpers/format';
 
+import { Conditional } from './../Conditional';
+import { Loader } from './../generic/Loader';
+
 import { TaskWrapper } from './../generic/Task/Wrapper';
 import { TaskCondition } from './../generic/Task/Condition';
 
@@ -29,9 +32,10 @@ import { WarningAlert } from './../generic/Alert/Warning';
 const TaskSingleInfo = ({ id }) => {
   const isLogin = authenticationService.isLogin();
   const isAdmin = accessService.isAdmin();
-  const [task, setTask] = useState({ started: false });
+  const [task, setTask] = useState({ isLoading: true });
+
   const [formData, setFormData] = useState({
-    solved: false,
+    isSolved: false,
     answer: {
       value: '',
       type: 'answer',
@@ -42,15 +46,8 @@ const TaskSingleInfo = ({ id }) => {
   });
 
   const validator = new Validator(formData, setFormData);
-  const { solved, answer } = formData;
-
-  const startTaskHandler = (e) => {
-    e.preventDefault();
-
-    setTimeout(() => {
-      setTask({ ...task, started: true });
-    }, 100);
-  };
+  const { isSolved, answer } = formData;
+  const { isLoading } = task;
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -64,7 +61,7 @@ const TaskSingleInfo = ({ id }) => {
     validator.checkTaskAnswer(task.answer);
 
     if (answer.valid) {
-      setFormData({ ...formData, solved: true });
+      setFormData({ ...formData, isSolved: true });
     }
   };
 
@@ -76,6 +73,7 @@ const TaskSingleInfo = ({ id }) => {
         id: shortId(id),
         conditionText: condition.text,
         conditionImg: condition.img,
+        isLoading: false,
       };
       delete info.condition;
       setTask({ ...task, ...info });
@@ -86,74 +84,72 @@ const TaskSingleInfo = ({ id }) => {
 
   return (
     <TaskWrapper>
-      <FlexBlock justify="space-between">
-        <h2>Задание #{task.id}</h2>
-        <Block>
-          {isAdmin ? (
-            <Fragment>
-              <IconLink to={`${taskUrl}/edit`}>
-                <AiOutlineEdit />
-              </IconLink>
-              <IconLink to={`${taskUrl}/delete`}>
-                <AiOutlineDelete />
-              </IconLink>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <IconLink to={`${taskUrl}/like`}>
-                <AiOutlineHeart />
-              </IconLink>
-            </Fragment>
-          )}
-        </Block>
-      </FlexBlock>
-      <span>
-        {task.topic} / {task.subtopic}
-      </span>
+      <Conditional if={!isLoading} else={<Loader />}>
+        <FlexBlock justify="space-between">
+          <h2>Задание #{task.id}</h2>
+          <Block>
+            {isAdmin ? (
+              <Fragment>
+                <IconLink to={`${taskUrl}/edit`}>
+                  <AiOutlineEdit />
+                </IconLink>
+                <IconLink to={`${taskUrl}/delete`}>
+                  <AiOutlineDelete />
+                </IconLink>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <IconLink to={`${taskUrl}/like`}>
+                  <AiOutlineHeart />
+                </IconLink>
+              </Fragment>
+            )}
+          </Block>
+        </FlexBlock>
+        <span>
+          {task.topic} / {task.subtopic}
+        </span>
 
-      <TaskCondition>
-        <p>{task.conditionText}</p>
-        <img src={task.conditionImg} alt="task-img" />
-        <br />
-        {task.answer}
-      </TaskCondition>
+        <TaskCondition>
+          <p>{task.conditionText}</p>
+          <img src={task.conditionImg} alt="task-img" />
+          <br />
+          {task.answer}
+        </TaskCondition>
 
-      {isLogin ? (
-        <FadeIn>
-          {solved ? (
-            <FadeIn>
-              <SuccessAlert>
-                <h6>Поздравляем!</h6>
-                <span> Вы решили задание верно. </span>
-                <span> Ваш ответ: {answer.value} </span>
-              </SuccessAlert>
+        {isLogin ? (
+          <FadeIn>
+            {isSolved ? (
+              <FadeIn>
+                <SuccessAlert>
+                  <h6>Поздравляем!</h6>
+                  <span> Вы решили задание верно. </span>
+                  <span> Ваш ответ: {answer.value} </span>
+                </SuccessAlert>
+              </FadeIn>
+            ) : (
+              <Form onSubmit={onSubmitHandler}>
+                <Input
+                  name="answer"
+                  label="Ваш ответ"
+                  max="8"
+                  placeholder="Введите число"
+                  error={!answer.valid && answer.errorMessage}
+                  onChange={(e) => onChangeHandler(e)}
+                />
+                <Button onClick={onSubmitHandler}>Проверить задание</Button>
+              </Form>
+            )}
+          </FadeIn>
+        ) : (
+          <WarningAlert>
+            <h6>ВНИМАНИЕ!</h6>
+            <span>Только авторизованные студенты могут решать задания. </span>
+          </WarningAlert>
+        )}
 
-              <Button type="secondary" to="/tasks/">
-                Вернуться в каталог
-              </Button>
-            </FadeIn>
-          ) : (
-            <Form onSubmit={onSubmitHandler}>
-              <Input
-                name="answer"
-                label="Ваш ответ"
-                max="8"
-                placeholder="Введите число"
-                error={!answer.valid && answer.errorMessage}
-                onChange={(e) => onChangeHandler(e)}
-              />
-              <Button onClick={onSubmitHandler}>Проверить задание</Button>
-            </Form>
-          )}
-        </FadeIn>
-      ) : (
-        <WarningAlert>
-          <h6>ВНИМАНИЕ!</h6>
-          <span>Только авторизованные студенты могут решать задания. </span>
-        </WarningAlert>
-      )}
-
-      <NavLink to="/tasks">Вернуться в каталог</NavLink>
+        <NavLink to="/tasks">Вернуться в каталог</NavLink>
+      </Conditional>
     </TaskWrapper>
   );
 };

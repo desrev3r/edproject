@@ -12,14 +12,14 @@ const ProfileList = ({ user }) => {
   const [profiles, setProfiles] = useState([]);
 
   useEffect(() => {
-    const profileList = userService.getAllProfiles().then((list) => {
+    userService.getAllProfiles().then((list) => {
       setProfiles(...profiles, list.data);
     });
   }, 0);
 
   return (
     <Fragment>
-      <FlexBlock justify="space-between">
+      {/* <FlexBlock justify="space-between">
         <h3>Всего: {profiles.length} студентов</h3>
         <Block>
           <Button type="disabled" url="">
@@ -36,7 +36,8 @@ const ProfileList = ({ user }) => {
           topic={experience.tasks.length}
           subtopic={experience.tasks.length}
         />
-      ))}
+      ))} */}
+      Студенты
     </Fragment>
   );
 };

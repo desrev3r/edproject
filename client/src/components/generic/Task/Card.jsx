@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
 import {
   AiOutlineHeart,
   AiOutlineEdit,
   AiOutlineDelete,
-  AiOutlineLeft,
 } from 'react-icons/ai';
 import styles from './task.module.scss';
 
@@ -18,7 +16,7 @@ import { IconLink } from './../IconLink';
 import { Button } from './../Button';
 
 export const TaskCard = ({ id, title, topic, subtopic, conditionText }) => {
-  const isAdmin = accessService.isAdmin;
+  const isAdmin = accessService.isAdmin();
   return (
     <div className={styles['task-card']}>
       <FlexBlock justify="space-between">

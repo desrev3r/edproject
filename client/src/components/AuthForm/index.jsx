@@ -33,7 +33,7 @@ const AuthForm = ({ history, setAlert, removeAlert, getUser }) => {
   });
 
   const validator = new Validator(formData, setFormData);
-  const { username, email, password, passwordConfirm, authorized } = formData;
+  const { email, password, authorized } = formData;
   const validateForm = () => {
     validator.email();
     validator.password();

@@ -25,6 +25,7 @@ export const user = (state = initialState, action) => {
         avatar,
       } = payload;
 
+      console.log(email);
       return {
         ...state,
         id: _id,

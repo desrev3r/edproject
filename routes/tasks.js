@@ -62,9 +62,7 @@ router.post('/:id', auth, async (req, res) => {
     };
 
     const isTaskExist = (taskId) => {
-      const found = progress.solved.some((el) => {
-        return el.id === taskId;
-      });
+      const found = progress.solved.some((el) => el.id === taskId);
       return found;
     };
 

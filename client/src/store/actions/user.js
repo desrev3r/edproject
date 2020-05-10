@@ -25,6 +25,7 @@ export const getUser = () => async (dispatch) => {
       },
     });
   } catch (err) {
+    console.log(err.message);
     dispatch({
       type: GET_USER_FAILURE,
       payload: {

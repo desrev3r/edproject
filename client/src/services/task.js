@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { authenticationService } from './authentication';
 
 const getAllTasks = async (id) => {
   try {
